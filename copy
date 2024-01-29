@@ -1,0 +1,5 @@
+CONTAINERS=("movies" "train" "dth" "recharg" "recharge")
+
+for CONTAINER in "${CONTAINERS[@]}"; do
+    docker cp $WAR_FILE_PATH $CONTAINER:/usr/local/tomcat/webapps
+done
