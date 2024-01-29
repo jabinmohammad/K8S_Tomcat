@@ -1,0 +1,30 @@
+1. CREATE N SERVERS AND INSTALL DOCKER ON ALL OF THEM & CREATE CLUSTER OF IT
+
+yum install docker -y
+systemctl start docker
+systemctl status docker
+ a.Go to master node & give bellow command
+docker swarm init 
+ b. Now go to each worker node & paste the output of the above command
+docker node ls [give this in master to chech the swarm setup]
+
+
+2. INSTALLING JENKINS (MASTER)
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+amazon-linux-extras install java-openjdk11 -y 
+yum install git maven jenkins -y
+systemctl start jenkins.service
+systemctl status jenkins.service
+
+
+3. CREATE CUSTOM IMAGES AND PUSH TO DOCKERHUB WITH TAGS
+
+
+
+4. GIVE PERMISSIONS IN MASTER NODE
+
+chmod 777 /var/run/docker.sock
+systemctl daemon-reload
+systemctl restart docker.service
