@@ -1,5 +1,6 @@
 1. CREATE N SERVERS AND INSTALL DOCKER ON ALL OF THEM & CREATE CLUSTER OF IT
 
+ [In all servers run the bellow 3 commands]
 yum install docker -y
 systemctl start docker
 systemctl status docker
@@ -18,8 +19,13 @@ yum install git maven jenkins -y
 systemctl start jenkins.service
 systemctl status jenkins.service
 
+DOCKER FILE	: To create image by automation.
+DOCKER COMPOSE	: To create multiple containers on single server.
+DOCKER SWARM	: To create multiple containers on Multiple server.
+DOCKE STACK	: Docker swarm + Docker compose
 
-3. CREATE CUSTOM IMAGES AND PUSH TO DOCKERHUB WITH TAGS
+
+3. CREATE CUSTOM IMAGES AND PUSH TO DOCKERHUB WITH TAGS WITH THE HELP OF PIPELINE
 
 
 
