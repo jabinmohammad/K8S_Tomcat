@@ -10,6 +10,5 @@ RUN sed -i '59  a\</tomcat-users>' apache-tomcat-9.0.83/conf/tomcat-users.xml
 RUN sed -i '56d' apache-tomcat-9.0.83/conf/tomcat-users.xml
 RUN sed -i '21d' apache-tomcat-9.0.83/webapps/manager/META-INF/context.xml
 RUN sed -i '22d'  apache-tomcat-9.0.83/webapps/manager/META-INF/context.xml
-EXPOSE 8080
 RUN mv ./apache-tomcat-9.0.83 ./usr/local/
 CMD ["./usr/local/apache-tomcat-9.0.83/bin/catalina.sh", "run"]
