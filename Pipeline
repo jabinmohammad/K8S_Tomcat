@@ -1,10 +1,45 @@
 pipeline {
     agent any
+    environment {
+        username     = credentials('username')
+        password = credentials('password')
+    }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/jabinmohammad/tomcat.git'
+                git 'https://github.com/jabinmohammad/docker-stack_Tomcat.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('Artifact') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage('Image') {
+            steps {
+                sh 'docker build -t netflix${BUILD_NUMBER} .'
+            }
+        }
+        stage('Tag') {
+            steps {
+                sh 'docker tag netflix${BUILD_NUMBER} jabinmohammad/netflix${BUILD_NUMBER}'
+            }
+        }
+        stage('Push') {
+            steps {
+                sh 'docker login -u $username -p $password'
+                sh 'docker push jabinmohammad/netflix${BUILD_NUMBER}'
             }
         }
         stage('Stack') {
