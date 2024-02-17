@@ -1,6 +1,6 @@
 FROM amazonlinux
 RUN yum install java -y
-ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.83/bin/apache-tomcat-9.0.85.tar.gz .
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.85/bin/apache-tomcat-9.0.85.tar.gz .
 RUN yum install gzip tar -y
 RUN tar -zxvf apache-tomcat-9.0.85.tar.gz
 RUN sed -i '56  a\<role rolename="manager-gui"/>' apache-tomcat-9.0.85/conf/tomcat-users.xml
