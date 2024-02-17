@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  movies:
+    container_name: movies
+    image: jabinmohammad/tomcat-amazon:latest
+    ports:
+      - "81:8080"
+    deploy:
+      replicas: 3
+
+  train:
+    container_name: train
+    image: jabinmohammad/tomcat-amazon:latest
+    ports:
+      - "82:8080"
+    deploy:
+      replicas: 3
+
+  dth:
+    container_name: dth
+    image: jabinmohammad/tomcat-amazon:latest
+    ports:
+      - "83:8080"
+    deploy:
+      replicas: 3
+
+  recharge:
+    container_name: recharge
+    image: jabinmohammad/tomcat-amazon:latest
+    ports:
+      - "84:8080"
+    deploy:
+      replicas: 3
